@@ -17,17 +17,17 @@ public class DersController {
 
     @GetMapping
     public List<Dersler> findAllDers() {
-        logger.info("Tüm Derslerin GET işlemi gerçekleşti.");
+        logger.info("\nTüm Derslerin GET işlemi gerçekleşti.");
         return service.findAllDers();
     }
 
     @GetMapping("/{id}")
     public Dersler findDersById(@PathVariable Long id) {
         try {
-            logger.info("Id ile Ders GET işlemi gerçekleşti.");
+            logger.info("\n" + id + " ID'li Dersin GET işlemi gerçekleşti.");
             return service.findDersById(id);
         } catch (Exception e) {
-            logger.error("GET işlemi başarısız oldu. Id'yi kontrol edin. ", e);
+            logger.error("\n" + id + " ID'li GET işlemi başarısız oldu. Id'yi kontrol edin. ", e);
             return null;
         }
     }
@@ -35,10 +35,10 @@ public class DersController {
     @PostMapping
     public Dersler saveDers(@RequestBody Dersler dersler) {
         try {
-            logger.info("Ders ekleme işlemi gerçekleşti");
+            logger.info( "\nDers ekleme işlemi gerçekleşti");
             return service.saveDers(dersler);
         } catch (Exception e) {
-            logger.error("Ders ekleme işlemi başarısız oldu.", e);
+            logger.error( "\nDers ekleme işlemi başarısız oldu.", e);
             return null;
         }
     }
@@ -47,10 +47,10 @@ public class DersController {
     public String deleteDers(@PathVariable Long id) {
         try {
             service.deleteDersById(id);
-            logger.info("Ders silme işlemi gerçekleşti");
+            logger.info("\n" + id + " Ders silme işlemi gerçekleşti");
             return id + " Ders Silme işlemi başarılı..";
         } catch (Exception e) {
-            logger.error("Ders Silme işlemi hatalı. Id kontrolü yapın.", e);
+            logger.error("\n" + id + " Ders Silme işlemi hatalı. Id kontrolü yapın.", e);
             return id + " Ders Silme işlemi hatalı.";
         }
 
@@ -60,10 +60,10 @@ public class DersController {
     @PutMapping("/{id}")
     public Dersler updateDers(@RequestBody Dersler dersler) {
         try {
-            logger.info("Ders Update işlemi gerçekleşti");
+            logger.info("\n"+dersler+"\nDers Update işlemi gerçekleşti");
             return service.updateDers(dersler);
         } catch (Exception e) {
-            logger.error("Update işlemi hatalı.", e);
+            logger.error("\n"+dersler+"\nUpdate işlemi hatalı.", e);
             return null;
         }
     }

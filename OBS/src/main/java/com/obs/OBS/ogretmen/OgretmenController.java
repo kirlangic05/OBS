@@ -21,10 +21,10 @@ public class OgretmenController {
     @GetMapping
     public List<Ogretmen> findAllOgretmen() {
         try {
-            logger.info("Ogretmen GET işlemi gerçekleşti.");
+            logger.info("\nOgretmen GET işlemi gerçekleşti.");
             return service.findAllOgretmen();
         } catch (Exception e) {
-            logger.error("Ogretmen GET işlemi hatalı.", e);
+            logger.error("\nOgretmen GET işlemi hatalı.", e);
             return null;
         }
     }
@@ -32,10 +32,10 @@ public class OgretmenController {
     @GetMapping("/{id}")
     public Ogretmen findOgretmenById(@PathVariable Long id) {
         try {
-            logger.info("Id ile ogretmen getirme işlemi gerçekleşti.");
+            logger.info("\n" + id + "ID'li ogretmen getirme işlemi gerçekleşti.");
             return service.findOgretmenById(id);
         } catch (Exception e) {
-            logger.error("Id ile ogretmen getirme işlemi hatalı. Id'yi kontrol edin", e);
+            logger.error("\n" + id + "Id ile ogretmen getirme işlemi hatalı. Id'yi kontrol edin", e);
             return null;
         }
     }
@@ -43,10 +43,10 @@ public class OgretmenController {
     @PostMapping
     public Ogretmen saveOgretmen(@RequestBody Ogretmen ogretmen) {
         try {
-            logger.info("Ogretmen kaydetme işlemi başarılı.");
+            logger.info("\nOgretmen kaydetme işlemi başarılı.");
             return service.saveOgretmen(ogretmen);
         } catch (Exception e) {
-            logger.error("Ogretmen kaydetme işlemi hatalı.", e);
+            logger.error("\nOgretmen kaydetme işlemi hatalı.", e);
             return null;
         }
     }
@@ -54,11 +54,11 @@ public class OgretmenController {
     @DeleteMapping("/{id}")
     public String deleteOgretmenById(@PathVariable Long id) {
         try {
-            logger.info("Ogretmen silme işlemi başarılı.");
+            logger.info("\n" + id + "ID'li Ogretmen silme işlemi başarılı.");
             service.deleteOgretmen(id);
             return id + " delete işlemi yapıldı";
         } catch (Exception e) {
-            logger.error("Ogretmen silme işlemi Hatalı.", e);
+            logger.error("\n" + id + "ID'li Ogretmen silme işlemi Hatalı.", e);
             return id + " delete işlemi HATALI!";
         }
     }
@@ -66,10 +66,10 @@ public class OgretmenController {
     @PutMapping("/{id}")
     public Ogretmen updateOgretmen(@RequestBody Ogretmen ogretmen) {
         try {
-            logger.info("Ogretmen update işlemi gerçekleşti.");
+            logger.info("\n" + ogretmen + "\nOgretmen update işlemi gerçekleşti.");
             return service.updateOgretmen(ogretmen);
         } catch (Exception e) {
-            logger.error("Ogretmen update işlemi hatalı.", e);
+            logger.error("\n" + ogretmen + "\nOgretmen update işlemi hatalı.", e);
             return null;
         }
     }

@@ -20,10 +20,10 @@ public class OgrenciController {
     @GetMapping
     public List<Ogrenci> findAllOgrenci() {
         try {
-            logger.info("Ogrenci verileri getirildi.");
+            logger.info("\nOgrenci verileri getirildi.");
             return service.findAllOgrenci();
         } catch (Exception e) {
-            logger.error("Ogrenci getirme işlemi hatalı.", e);
+            logger.error("\nOgrenci getirme işlemi hatalı.", e);
             return null;
         }
     }
@@ -31,10 +31,10 @@ public class OgrenciController {
     @GetMapping("/{id}")
     public Ogrenci findOgrenciById(@PathVariable Long id) {
         try {
-            logger.info("Id ile ogrenci getirme işlemi gerçekleşti.");
+            logger.info("\n" + id + "ID'li ogrenciyi getirme işlemi gerçekleşti.");
             return service.findOgrenciById(id);
         } catch (Exception e) {
-            logger.error("Ogrenci getirme işlemi hatalı. Id'yi kontrol edin.", e);
+            logger.error("\n" + id + "ID'li Ogrenci getirme işlemi hatalı. Id'yi kontrol edin.", e);
             return null;
         }
     }
@@ -42,10 +42,10 @@ public class OgrenciController {
     @PostMapping
     public Ogrenci saveOgrenci(@RequestBody Ogrenci ogrenci) {
         try {
-            logger.info("Ogrenci ekleme işlemi gerçekleşti.");
+            logger.info("\nOgrenci ekleme işlemi gerçekleşti.");
             return service.saveOgrenci(ogrenci);
         } catch (Exception e) {
-            logger.error("Ogrenci ekleme işlemi Hatalı.", e);
+            logger.error("\nOgrenci ekleme işlemi Hatalı.", e);
             return null;
         }
     }
@@ -53,10 +53,11 @@ public class OgrenciController {
     @DeleteMapping("/{id}")
     public String deleteOgrenci(@PathVariable Long id) {
         try {
+            logger.info("\n" + id + "ID'li Öğrenci silme işlemi gerçekleşti.");
             service.deleteOgrenciById(id);
             return id + " Öğrenci silme işlemi başarılı...";
         } catch (Exception e) {
-            logger.error("Ogrenci silme işlemi hatalı.", e);
+            logger.error("\n" + id + "ID'li Ogrenci silme işlemi hatalı.", e);
             return id + " ogrenci silme işlemi HATALI";
         }
     }

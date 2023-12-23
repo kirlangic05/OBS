@@ -37,10 +37,10 @@ public class NotController {
     @PostMapping
     public Not saveNot(@RequestBody Not not) {
         try {
-            logger.info("Not ekleme işlemi gerçekleşti.");
+            logger.info("\nNot ekleme işlemi gerçekleşti.");
             return service.saveNot(not);
         } catch (Exception e) {
-            logger.error("Not ekleme işleminde bir hata var.", e);
+            logger.error("\nNot ekleme işleminde bir hata var.", e);
             return null;
         }
     }
@@ -60,10 +60,10 @@ public class NotController {
     @PutMapping("/{id}")
     public Not updateNot(@RequestBody Not not) {
         try {
-            logger.info("Not update işlemi gerçekleşti.");
+            logger.info("\n" + not + "\nNot update işlemi gerçekleşti.");
             return service.updateNot(not);
         } catch (Exception e) {
-            logger.error("Not update işlemi hatalı.", e);
+            logger.error("\n" + not + "\nNot update işlemi hatalı.", e);
             return null;
         }
 

@@ -11,6 +11,8 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.annotation.SendToUser;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 
 import java.util.Optional;
@@ -34,6 +36,11 @@ private static final Logger logger= LoggerFactory.getLogger(ChatController.class
     public ChatMessage OgretmenSendMessage(ChatMessage message) {
         logger.info("ogretmenden ogrenciye");
         return message;
+    }
+
+    @PostMapping
+    public void sendMessage(@RequestBody ChatMessage message){
+
     }
 
 
