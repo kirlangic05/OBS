@@ -20,7 +20,11 @@ public class Dersler {
     @Column(name = "ders_adi")
     private String dersAdi;
 
-//    @JsonBackReference
+    @Override //yapay zeka eklentisi
+    public String toString() {
+        return "\nDers Adı = " + dersAdi ;
+    }
+
     @ManyToOne
     @JoinColumn(name = "ogrenciId")
     @JsonBackReference

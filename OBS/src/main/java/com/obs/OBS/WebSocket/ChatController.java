@@ -38,10 +38,7 @@ private static final Logger logger= LoggerFactory.getLogger(ChatController.class
         return message;
     }
 
-    @PostMapping
-    public void sendMessage(@RequestBody ChatMessage message){
 
-    }
 
 
 

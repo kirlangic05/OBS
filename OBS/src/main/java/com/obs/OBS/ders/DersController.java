@@ -1,5 +1,8 @@
 package com.obs.OBS.ders;
 
+import com.obs.OBS.MailSender.EmailService;
+import com.obs.OBS.ogrenci.Ogrenci;
+import com.obs.OBS.ogrenci.OgrenciService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,10 @@ import java.util.List;
 public class DersController {
     @Autowired
     DersService service;
+    @Autowired
+    OgrenciService ogrenciService;
+    @Autowired
+    EmailService emailService;
 
     private static final Logger logger = LoggerFactory.getLogger(DersController.class);
 
@@ -32,13 +39,17 @@ public class DersController {
         }
     }
 
-    @PostMapping
-    public Dersler saveDers(@RequestBody Dersler dersler) {
+    @PostMapping("/{id}")
+    public Dersler saveDers(@RequestBody Dersler dersler, @PathVariable Long id) {
         try {
-            logger.info( "\nDers ekleme işlemi gerçekleşti");
+            Ogrenci ogrenci = ogrenciService.findOgrenciById(id);
+
+            emailService.sendEmailWithAttachment(dersler, ogrenci);
+
+            logger.info("\nDers ekleme işlemi gerçekleşti");
             return service.saveDers(dersler);
         } catch (Exception e) {
-            logger.error( "\nDers ekleme işlemi başarısız oldu.", e);
+            logger.error("\nDers ekleme işlemi başarısız oldu.", e);
             return null;
         }
     }
@@ -60,10 +71,10 @@ public class DersController {
     @PutMapping("/{id}")
     public Dersler updateDers(@RequestBody Dersler dersler) {
         try {
-            logger.info("\n"+dersler+"\nDers Update işlemi gerçekleşti");
+            logger.info("\n" + dersler + "\nDers Update işlemi gerçekleşti");
             return service.updateDers(dersler);
         } catch (Exception e) {
-            logger.error("\n"+dersler+"\nUpdate işlemi hatalı.", e);
+            logger.error("\n" + dersler + "\nUpdate işlemi hatalı.", e);
             return null;
         }
     }

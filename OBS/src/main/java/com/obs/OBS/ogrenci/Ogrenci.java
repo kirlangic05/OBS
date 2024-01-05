@@ -20,6 +20,9 @@ public class Ogrenci {
     @Column(name = "ogrenci_isim")
     private String isim;
 
+    @Column(name = "email")
+    private String email;
+
     @OneToMany(mappedBy = "ogrenci",cascade = CascadeType.ALL,orphanRemoval = true)
     @JsonManagedReference
     private List<Dersler> ders;
