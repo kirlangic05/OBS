@@ -22,7 +22,7 @@ public class Dersler {
 
     @Override //yapay zeka eklentisi
     public String toString() {
-        return "\nDers Adı = " + dersAdi ;
+        return "\nDers Adı = " + dersAdi;
     }
 
     @ManyToOne
@@ -31,12 +31,12 @@ public class Dersler {
     private Ogrenci ogrenci;
 
 
-    @OneToOne(orphanRemoval = true,cascade = CascadeType.REMOVE) //yeni
+    @OneToOne(orphanRemoval = true, cascade = CascadeType.REMOVE) //yeni
     @JoinColumn(name = "ogretmen_id")
     @JsonManagedReference
     private Ogretmen ogretmen;
 
-    @OneToOne(orphanRemoval = true,cascade = CascadeType.REMOVE) //yeni
+    @OneToOne(orphanRemoval = true, cascade = CascadeType.REMOVE) //yeni
     @JoinColumn(name = "notId")
     @JsonManagedReference
     private Not notlar;

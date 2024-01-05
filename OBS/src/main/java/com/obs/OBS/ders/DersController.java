@@ -44,7 +44,7 @@ public class DersController {
         try {
             Ogrenci ogrenci = ogrenciService.findOgrenciById(id);
 
-            emailService.sendEmailWithAttachment(dersler, ogrenci);
+            emailService.sendEmail(dersler, ogrenci);
 
             logger.info("\nDers ekleme işlemi gerçekleşti");
             return service.saveDers(dersler);

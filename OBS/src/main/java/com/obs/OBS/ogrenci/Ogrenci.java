@@ -23,16 +23,14 @@ public class Ogrenci {
     @Column(name = "email")
     private String email;
 
-    @OneToMany(mappedBy = "ogrenci",cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "ogrenci", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<Dersler> ders;
 /**
  * cascade = CascadeType.ALL yapılan bir güncellemede
  *   dersler tarafındada güncellemeyi geçerli kılar.
  *   @JsonManagedReference &  @JsonBackReference
-*/
-
-
+ */
 
 
 }

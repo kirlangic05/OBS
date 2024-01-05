@@ -29,10 +29,10 @@ public class EmailService {
     }
 
 
-    public void sendEmailWithAttachment(@RequestBody Dersler dersler, Ogrenci ogrenci) throws MessagingException {
-        MimeMessage mimeMessage= javaMailSender.createMimeMessage();
+    public void sendEmail(@RequestBody Dersler dersler, Ogrenci ogrenci) throws MessagingException {
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
 
-        MimeMessageHelper mimeMessageHelper= new MimeMessageHelper(mimeMessage,true); // true kısmı çok parçalı bir mail oldugu anlamına gelir
+        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true); // true kısmı çok parçalı bir mail oldugu anlamına gelir
 
 
         if (ogrenci == null) {
@@ -42,7 +42,7 @@ public class EmailService {
 
         mimeMessageHelper.setFrom("SENDER");
         mimeMessageHelper.setTo(email);
-        mimeMessageHelper.setText(" Ders programınıza yeni bir ders eklendi! "+ dersler);
+        mimeMessageHelper.setText(" Ders programınıza yeni bir ders eklendi! " + dersler);
         mimeMessageHelper.setSubject("Ders Programı güncellemesi.");
 
 //        FileSystemResource fileSystemResource= new FileSystemResource(new File("C:\\Users\\melih\\Downloads\\ChatAppGörsel.jpeg"));
@@ -51,6 +51,6 @@ public class EmailService {
 
         javaMailSender.send(mimeMessage);
 
-        System.out.println("Mail send to "+ email);
+        System.out.println("Mail send to " + email);
     }
 }
