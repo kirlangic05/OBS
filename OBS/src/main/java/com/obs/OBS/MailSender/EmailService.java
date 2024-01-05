@@ -40,7 +40,7 @@ public class EmailService {
         }
         String email = ogrenci.getEmail();
 
-        mimeMessageHelper.setFrom("melih199906@gmail.com");
+        mimeMessageHelper.setFrom("SENDER");
         mimeMessageHelper.setTo(email);
         mimeMessageHelper.setText(" Ders programınıza yeni bir ders eklendi! "+ dersler);
         mimeMessageHelper.setSubject("Ders Programı güncellemesi.");
